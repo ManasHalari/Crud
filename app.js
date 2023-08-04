@@ -1,0 +1,12 @@
+require("dotenv").config()
+const express=require("express")
+const cors=require("cors")
+const dbConnect=require("./config/db.js")
+const userouter=require("./routes/router.js")
+dbConnect()
+const app=express()
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(cors())
+app.use("/",userouter)
+module.exports=app
